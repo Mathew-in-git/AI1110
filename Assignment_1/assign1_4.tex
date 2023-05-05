@@ -304,6 +304,16 @@ Solution:
 x = Outcome of the first dice
 
 y = Outcome of the second dice
+\begin{align}
+\pr{XY \leq N} &= \sum_{k=1}^{m} \pr{X=k} F_Y(N/k)\\
+&=\sum_{k=1}^{m} \frac{1}{6} F_Y(N/k)
+\end{align}
+
+where \pr{X} denotes pmf of random variable x
+
+$F_Y(y)$ denotes cdf of random variable y
+
+m is the largest integer such that m $\leq$ N\\
 
 Since random variables x,y are independent 
 \begin{align}
