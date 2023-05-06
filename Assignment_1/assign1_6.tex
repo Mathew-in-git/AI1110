@@ -315,10 +315,10 @@ where \pr{X} denotes pmf of random variable x
 $F_Y(y)$ denotes cdf of random variable y
 
 \begin{align}
-F_y\brak{y}=
+F\brak{\frac{n}{k}}=
 	\begin{cases}
-		1 & y > 6\\
-		\frac{\lfloor y \rfloor}{6} & y \leq 6
+		1 & k < \frac{n}{6}\\
+		\frac{\lfloor \frac{n}{k} \rfloor}{6} & k \geq \frac{n}{6}
 	\end{cases}
 \end{align}
 
