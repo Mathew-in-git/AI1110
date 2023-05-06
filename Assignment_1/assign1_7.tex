@@ -318,7 +318,8 @@ $F_Y(y)$ denotes cdf of random variable y
 F\brak{\frac{n}{k}}=
 	\begin{cases}
 		1 & k < \frac{n}{6}\\
-		\frac{\lfloor \frac{n}{k} \rfloor}{6} & k \geq \frac{n}{6}
+		\frac{\lfloor \frac{n}{k} \rfloor}{6} & k \geq \frac{n}{6} \cap \frac{n}{k} \notin I\\
+		\frac{\brak{\frac{n}{k}}}{6} & k \geq \frac{n}{6} \cap \frac{n}{k} \in I
 	\end{cases}
 \end{align}
 
