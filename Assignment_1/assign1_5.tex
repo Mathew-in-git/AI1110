@@ -305,15 +305,33 @@ x = Outcome of the first dice
 
 y = Outcome of the second dice
 \begin{align}
-\pr{XY \leq N} &= \sum_{k=1}^{m} \pr{X=k} F_Y(N/k)\\
-&=\sum_{k=1}^{m} \frac{1}{6} F_Y(N/k)
+\pr{xy \leq n} &= \sum_{k=1}^{6} \pr{x=k} F_y\brak{\frac{n}{k}}\\
+&=\sum_{k=1}^{6} \frac{1}{6} \times F_y\brak{\frac{n}{k}}\\
+&=\frac{1}{6}\times\sum_{k=1}^{6} F_y\brak{\frac{n}{k}}
 \end{align}
 
 where \pr{X} denotes pmf of random variable x
 
 $F_Y(y)$ denotes cdf of random variable y
 
-m is the largest integer such that m $\leq$ N\\
+\begin{align}
+F_y\brak{y}=
+	\begin{cases}
+		1 & y > 6\\
+		\frac{\lfloor y \rfloor}{6} & y \leq 6
+	\end{cases}
+\end{align}
+
+where $\lfloor x \rfloor$ denotes the greatest integer less 
+
+than or equal to x
+
+\begin{align}
+\pr{xy \leq n} &= \frac{1}{6} \times \sum_{k=1}^{6} F_y\brak{\frac{n}{k}}\\
+&=\frac{1}{6} \times \sbrak{\sum_{k=1}^{\lfloor \frac{n}{6} \rfloor} F_y\brak{\frac{n}{k}}+\sum_{k=\lfloor \frac{n}{6} \rfloor + 1}^{6} F_y\brak{\frac{n}{k}}}\\
+&=\frac{1}{6} \times \sbrak{\sum_{k=1}^{\lfloor \frac{n}{6} \rfloor} 1+\sum_{k=\lfloor \frac{n}{6} \rfloor + 1}^{6} F_y\brak{\frac{n}{k}}}\\
+&=\frac{1}{6} \times \sbrak{\lfloor \frac{n}{6} \rfloor +\sum_{k=\lfloor \frac{n}{6} \rfloor + 1}^{6} F_y\brak{\frac{n}{k}}}
+\end{align}
 
 Since random variables x,y are independent 
 \begin{align}
@@ -350,4 +368,3 @@ $xy=7$ for $(x,y) = \{\}$
 
 \end{enumerate}
 \end{document}
-
