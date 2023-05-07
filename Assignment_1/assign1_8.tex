@@ -301,70 +301,79 @@ on the top of the dice is
 \end{enumerate}
 Solution:
 
-x = Outcome of the first dice
+X = Outcome of the first dice
 
-y = Outcome of the second dice
+Y = Outcome of the second dice
+
 \begin{align}
-\pr{xy \leq n} &= \sum_{k=1}^{6} \pr{x=k} F_y\brak{\frac{n}{k}}\\
-&=\sum_{k=1}^{6} \frac{1}{6} \times F_y\brak{\frac{n}{k}}\\
-&=\frac{1}{6}\times\sum_{k=1}^{6} F_y\brak{\frac{n}{k}}
+F_y\brak{y}=
+	\begin{cases}
+		1 & y > 6\\
+		\frac{\sbrak{y}}{6} & y \leq 6 \cap y \in I\\
+		\frac{y}{6} & y \leq 6 \cap y \notin I
+	\end{cases}
 \end{align}
 
-where \pr{X} denotes pmf of random variable x
+\begin{align}
+\pr{XY \leq n} &= \sum_{k=1}^{6} \pr{X=k} F_Y\brak{\brak{\frac{n}{k}}|k}\\
+&=\sum_{k=1}^{6} \frac{1}{6} \times F_Y\brak{\brak{\frac{n}{k}}|k}\\
+&=\frac{1}{6}\times\sum_{k=1}^{6} F_Y\brak{\brak{\frac{n}{k}}|k}
+\end{align}
 
-$F_Y(y)$ denotes cdf of random variable y
+where \pr{X} denotes pmf of random variable X
 
+$F_Y(y)$ denotes cdf of random variable Y
 \begin{align}
 F\brak{\frac{n}{k}}=
 	\begin{cases}
 		1 & k < \frac{n}{6}\\
-		\frac{\lfloor \frac{n}{k} \rfloor}{6} & k \geq \frac{n}{6} \cap \frac{n}{k} \notin I\\
+		\frac{\sbrak{\frac{n}{k}}}{6} & k \geq \frac{n}{6} \cap \frac{n}{k} \notin I\\
 		\frac{\brak{\frac{n}{k}}}{6} & k \geq \frac{n}{6} \cap \frac{n}{k} \in I
 	\end{cases}
 \end{align}
 
-where $\lfloor x \rfloor$ denotes the greatest integer less 
+where $\sbrak {x}$ denotes the greatest integer less 
 
 than or equal to x
 
 \begin{align}
-\pr{xy \leq n} &= \frac{1}{6} \times \sum_{k=1}^{6} F_y\brak{\frac{n}{k}}\\
-&=\frac{1}{6} \times \sbrak{\sum_{k=1}^{\lfloor \frac{n}{6} \rfloor} F_y\brak{\frac{n}{k}}+\sum_{k=\lfloor \frac{n}{6} \rfloor + 1}^{6} F_y\brak{\frac{n}{k}}}\\
-&=\frac{1}{6} \times \sbrak{\sum_{k=1}^{\lfloor \frac{n}{6} \rfloor} 1+\sum_{k=\lfloor \frac{n}{6} \rfloor + 1}^{6} F_y\brak{\frac{n}{k}}}\\
-&=\frac{1}{6} \times \sbrak{\lfloor \frac{n}{6} \rfloor +\sum_{k=\lfloor \frac{n}{6} \rfloor + 1}^{6} F_y\brak{\frac{n}{k}}}
+\pr{XY \leq n} &= \frac{1}{6} \times \sum_{k=1}^{6} F_Y\brak{\frac{n}{k}}\\
+&=\frac{1}{6} \times \cbrak{\sum_{k=1}^{\sbrak{\frac{n}{6} }} F_Y\brak{\frac{n}{k}}+\sum_{k=\sbrak{\frac{n}{6}} + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
+&=\frac{1}{6} \times \cbrak{\sum_{k=1}^{\sbrak{\frac{n}{6} }} 1+\sum_{k=\sbrak{ \frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
+&=\frac{1}{6} \times \cbrak{\sbrak {\frac{n}{6} } +\sum_{k=\sbrak{\frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}
 \end{align}
 
-Since random variables x,y are independent 
+Since random variables X,Y are independent 
 \begin{align}
-\pr{x,y}=\pr{x} \times \pr{y}=\frac{1}{6} \times \frac{1}{6}=\frac{1}{36}
+\pr{X,Y}=\pr{X} \times \pr{Y}=\frac{1}{6} \times \frac{1}{6}=\frac{1}{36}
 \end{align}
 
 \begin{enumerate}
 \item Product = 6
 
-$xy=6$ for $(x,y) = \{(1,6) , (2,3) , (3,2), (6,1)\}$
+$XY=6$ for $(X,Y) = \{(1,6) , (2,3) , (3,2), (6,1)\}$
 
 No. of events for product to be 6 = 4 
 
 \begin{align}
-\pr{xy=6} = 4 \times \frac{1}{36} = \frac{1}{9} 
+\pr{XY=6} = 4 \times \frac{1}{36} = \frac{1}{9} 
 \end{align}
 
 \item Product = 12
 
-$xy=12$ for $(x,y) = \{(2,6) , (3,4) , (4,3), (6,2)\}$
+$XY=12$ for $(X,Y) = \{(2,6) , (3,4) , (4,3), (6,2)\}$
 
 No. of events for product to be 12 = 4 
 
 \begin{align}
-\pr{xy=12} = 4 \times \frac{1}{36} = \frac{1}{9}
+\pr{XY=12} = 4 \times \frac{1}{36} = \frac{1}{9}
 \end{align}
 \item Product = 7
 
-$xy=7$ for $(x,y) = \{\}$
+$XY=7$ for $(X,Y) = \{\}$
 
 \begin{align}
-\pr{xy=7} = 0
+\pr{XY=7} = 0
 \end{align}
 
 \end{enumerate}
