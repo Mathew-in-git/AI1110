@@ -305,17 +305,54 @@ X = Outcome of the first dice
 
 Y = Outcome of the second dice
 
+Z = XY\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        X & 1 & 2 & 3 & 4 & 5 & 6\\
+        \hline
+        $\pr{x}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ &$\frac{1}{6}$\\
+        \hline
+    \end{tabular}\\
+
+The pmf of Y is also similar to the table above
+
 \begin{align}
-F_y\brak{y}=
-	\begin{cases}
-		1 & y > 6\\
-		\frac{\sbrak{y}}{6} & y \leq 6 \cap y \in I\\
-		\frac{y}{6} & y \leq 6 \cap y \notin I
-	\end{cases}
+E\brak{X}&=\sum_{X_i=1}^{X_6} X_i\pr{X_i}=\frac{1}{6}\times\brak{\sum_{X=1}^{6} X}\\
+&=\frac{1}{6}\times\frac{6\times7}{2}=\frac{7}{2}
+\end{align}
+
+Similarly
+\begin{align}
+E\brak{Y}=\frac{7}{2}
+\end{align}
+
+Since X,Y are independent random variables
+\begin{align}
+E\brak{XY}&=E\brak{X}\times E\brak{Y}\\
+&=\frac{7}{2}\times\frac{7}{2}\\
+&=\frac{49}{4}
 \end{align}
 
 \begin{align}
-\pr{XY \leq n} &= \sum_{k=1}^{6} \pr{X=k} F_Y\brak{\brak{\frac{n}{k}}|k}\\
+F_Y\brak{y}=
+	\begin{cases}
+		0 & y < 1\\
+		\frac{y}{6} & 1 \leq y \leq 6\\
+		1 & y > 6
+	\end{cases}
+\end{align}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        Y & $< 1$ & 1 & 2 & 3 & 4 & 5 & 6 & $> 6$\\
+        \hline
+        $F_Y(y)$ & $0$ & $\frac{1}{6}$ & $\frac{2}{6}$ & $\frac{3}{6}$ & $\frac{4}{6}$ & $\frac{5}{6}$ & $1$ & $1$ \\
+        \hline
+    \end{tabular}
+
+
+\begin{align}
+\pr{Z \leq n} &= \sum_{k=1}^{6} \pr{X=k} F_Y\brak{\brak{\frac{n}{k}}|k}\\
 &=\sum_{k=1}^{6} \frac{1}{6} \times F_Y\brak{\brak{\frac{n}{k}}|k}\\
 &=\frac{1}{6}\times\sum_{k=1}^{6} F_Y\brak{\brak{\frac{n}{k}}|k}
 \end{align}
@@ -337,7 +374,7 @@ where $\sbrak {x}$ denotes the greatest integer less
 than or equal to x
 
 \begin{align}
-\pr{XY \leq n} &= \frac{1}{6} \times \sum_{k=1}^{6} F_Y\brak{\frac{n}{k}}\\
+\pr{Z \leq n} &= \frac{1}{6} \times \sum_{k=1}^{6} F_Y\brak{\frac{n}{k}}\\
 &=\frac{1}{6} \times \cbrak{\sum_{k=1}^{\sbrak{\frac{n}{6} }} F_Y\brak{\frac{n}{k}}+\sum_{k=\sbrak{\frac{n}{6}} + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
 &=\frac{1}{6} \times \cbrak{\sum_{k=1}^{\sbrak{\frac{n}{6} }} 1+\sum_{k=\sbrak{ \frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
 &=\frac{1}{6} \times \cbrak{\sbrak {\frac{n}{6} } +\sum_{k=\sbrak{\frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}
@@ -351,29 +388,31 @@ Since random variables X,Y are independent
 \begin{enumerate}
 \item Product = 6
 
-$XY=6$ for $(X,Y) = \{(1,6) , (2,3) , (3,2), (6,1)\}$
+$Z=6$ for $(X,Y) = \{(1,6) , (2,3) , (3,2), (6,1)\}$
 
 No. of events for product to be 6 = 4 
 
 \begin{align}
-\pr{XY=6} = 4 \times \frac{1}{36} = \frac{1}{9} 
+\pr{Z=6}&= F_z(6)-F_z(5)\\
+&= 4 \times \frac{1}{36}=\frac{1}{9} 
 \end{align}
 
 \item Product = 12
 
-$XY=12$ for $(X,Y) = \{(2,6) , (3,4) , (4,3), (6,2)\}$
+$Z=12$ for $(X,Y) = \{(2,6) , (3,4) , (4,3), (6,2)\}$
 
 No. of events for product to be 12 = 4 
 
 \begin{align}
-\pr{XY=12} = 4 \times \frac{1}{36} = \frac{1}{9}
+\pr{Z=12}&= F_z(12)-F_z(11)\\
+&= 4 \times \frac{1}{36}=\frac{1}{9} 
 \end{align}
 \item Product = 7
 
-$XY=7$ for $(X,Y) = \{\}$
+$Z=7$ for $(X,Y) = \{\}$
 
 \begin{align}
-\pr{XY=7} = 0
+\pr{Z=7} = 0
 \end{align}
 
 \end{enumerate}

@@ -26,6 +26,6 @@ while i<100000:
 
 
 plt.xlabel('N')
-plt.ylabel('cdf(XY)')
+plt.ylabel('cdf(Z)')
 plt.plot(N,cdf_xy,'r')
 plt.show()
