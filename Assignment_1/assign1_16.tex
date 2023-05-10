@@ -1,5 +1,6 @@
 \let\negmedspace\undefined
 \let\negthickspace\undefined
+\def\inputGnumericTable{} 
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
 %\documentclass[conference]{IEEEtran}
 %\IEEEoverridecommandlockouts
@@ -18,6 +19,16 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{tkz-euclide} % loads  TikZ and tkz-base
 \usepackage{listings}
+\usepackage{caption}
+\usepackage[latin1]{inputenc}                                 
+    \usepackage{color}                                            
+    \usepackage{array}                                            
+    \usepackage{longtable}                                        
+    \usepackage{calc}                                             
+    \usepackage{multirow}                                         
+    \usepackage{hhline}                                           
+    \usepackage{ifthen}
+
 %
 %\usepackage{setspace}
 %\usepackage{gensymb}
@@ -305,16 +316,14 @@ X = Outcome of the first dice
 
 Y = Outcome of the second dice
 
-Z = XY\\
+Z = XY
 
-\begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline
-        X & 1 & 2 & 3 & 4 & 5 & 6\\
-        \hline
-        $\pr{x}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ &$\frac{1}{6}$\\
-        \hline
-    \end{tabular}\\
-
+\begin{table}[h]
+	\centering
+	\input{assigntable1_3}
+	\caption{Pmf of outcome when a single die is tossed}
+	\label{table1}
+\end{table}
 The pmf of Y is also similar to the table above
 
 \begin{align}
@@ -342,17 +351,14 @@ F_Y\brak{y}=
 		1 & y > 6
 	\end{cases}
 \end{align}
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-        \hline
-        Y & $< 1$ & 1 & 2 & 3 & 4 & 5 & 6 & $> 6$\\
-        \hline
-        $F_Y(y)$ & $0$ & $\frac{1}{6}$ & $\frac{2}{6}$ & $\frac{3}{6}$ & $\frac{4}{6}$ & $\frac{5}{6}$ & $1$ & $1$ \\
-        \hline
-    \end{tabular}
-
+\begin{table}[h]
+	\input{assigntable1_4}
+	\caption{Cdf of outcome when a single die is tossed}
+	\label{Table2}
+\end{table}
 
 \begin{align}
-\pr{Z \leq n} &= \sum_{k=1}^{6} \pr{X=k} F_Y\brak{\brak{\frac{n}{k}}|k}\\
+F_Z(n) &= \sum_{k=1}^{6} \pr{X=k} F_Y\brak{\brak{\frac{n}{k}}|k}\\
 &=\sum_{k=1}^{6} \frac{1}{6} \times F_Y\brak{\brak{\frac{n}{k}}|k}\\
 &=\frac{1}{6}\times\sum_{k=1}^{6} F_Y\brak{\brak{\frac{n}{k}}|k}
 \end{align}
@@ -377,14 +383,29 @@ than or equal to x
 F_Z\brak{n} &= \frac{1}{6} \times \sum_{k=1}^{6} F_Y\brak{\frac{n}{k}}\\
 &=\frac{1}{6} \times \cbrak{\sum_{k=1}^{\sbrak{\frac{n}{6} }} F_Y\brak{\frac{n}{k}}+\sum_{k=\sbrak{\frac{n}{6}} + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
 &=\frac{1}{6} \times \cbrak{\sum_{k=1}^{\sbrak{\frac{n}{6} }} 1+\sum_{k=\sbrak{ \frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
-&=\frac{1}{6} \times \cbrak{\sbrak {\frac{n}{6} } +\sum_{k=\sbrak{\frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}
+&=\frac{1}{6} \times \cbrak{\sbrak {\frac{n}{6} } +\sum_{k=\sbrak{\frac{n}{6} } + 1}^{6} F_Y\brak{\frac{n}{k}}}\\
 \end{align}
 
+See Fig.~\ref{figure1}
+
+\begin{align}
+\pr{Z=n}&= F_z(n)-F_z(n-1)
+\end{align}
+
+See Fig.~\ref{figure2}
+
 \begin{figure}
-				 \includegraphics[width=\columnwidth]{assign1_6.png}
+				\centering
+				\includegraphics[scale=0.5,width=\columnwidth]{assign1_6.png}
+				\caption{Plot of cummulative Distribution function}
+				\label{figure1}
 \end{figure}
+
 \begin{figure}
-				\includegraphics[width=\columnwidth]{assign1_5.png}
+			\centering
+			\includegraphics[width=\columnwidth]{assign1_5.png}
+			\caption{Plot of Probability Mass Function}
+\label{figure2}
 \end{figure}
 
 \newpage
@@ -396,7 +417,11 @@ Since random variables X,Y are independent
 \begin{enumerate}
 \item Product = 6
 
-$Z=6$ for $(X,Y) = \{(1,6) , (2,3) , (3,2), (6,1)\}$
+\begin{table}[h]
+	\input{assigntable1_5}
+	\caption{Cases for which product of outcome = 6}
+	\label{Table3}
+\end{table}
 
 No. of events for product to be 6 = 4 
 
@@ -407,7 +432,11 @@ No. of events for product to be 6 = 4
 
 \item Product = 12
 
-$Z=12$ for $(X,Y) = \{(2,6) , (3,4) , (4,3), (6,2)\}$
+\begin{table}[h]
+	\input{assigntable1_6}
+	\caption{Cases for which product of outcome = 12}
+	\label{Table4}
+\end{table}
 
 No. of events for product to be 12 = 4 
 
@@ -418,6 +447,8 @@ No. of events for product to be 12 = 4
 \item Product = 7
 
 $Z=7$ for $(X,Y) = \{\}$
+
+There are no events for which product of outcome = 7
 
 \begin{align}
 \pr{Z=7} = 0
