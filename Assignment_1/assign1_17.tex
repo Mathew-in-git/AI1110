@@ -318,13 +318,15 @@ Y = Outcome of the second dice
 
 Z = XY
 
-\begin{table}[h]
-	\centering
-	\input{assigntable1_3}
-	\caption{Pmf of outcome when a single die is tossed}
-	\label{table1}
-\end{table}
-The pmf of Y is also similar to the table above
+\begin{align}
+\pr{X}=
+	\begin{cases}
+		0 & x < 1\\
+		\frac{1}{6} & 1 \leq x \leq 6\\
+		0 & x > 6
+	\end{cases}
+\end{align}
+The pmf of Y is also same as above.
 
 \begin{align}
 E\brak{X}&=\sum_{X_i=1}^{X_6} X_i\pr{X_i}=\frac{1}{6}\times\brak{\sum_{X=1}^{6} X}\\
@@ -351,11 +353,6 @@ F_Y\brak{y}=
 		1 & y > 6
 	\end{cases}
 \end{align}
-\begin{table}[h]
-	\input{assigntable1_4}
-	\caption{Cdf of outcome when a single die is tossed}
-	\label{Table2}
-\end{table}
 
 \begin{align}
 F_Z(n) &= \sum_{k=1}^{6} \pr{X=k} F_Y\brak{\brak{\frac{n}{k}}|k}\\
